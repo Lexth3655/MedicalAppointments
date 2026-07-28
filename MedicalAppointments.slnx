@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/1.MedicalAppointments.Domain/">
+    <Project Path="MedicalAppointments.Domain/MedicalAppointments.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/2.MedicalAppointments.Core/">
+    <Project Path="MedicalAppointments.Core/MedicalAppointments.Core.csproj" />
+  </Folder>
+  <Folder Name="/src/3.MedicalAppointments.Persistence/">
+    <Project Path="MedicalAppointments.Persistence/MedicalAppointments.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/src/4.MedicalAppointments.Infrastructure/">
+    <Project Path="MedicalAppointments.Infrastructure/MedicalAppointments.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/5.MedicalAppointments.Api/">
+    <Project Path="MedicalAppointments.Api/MedicalAppointments.Api.csproj" />
+  </Folder>
+</Solution>
