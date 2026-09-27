@@ -1,18 +1,21 @@
 <Solution>
+  <Folder Name="/Nuget_Class/">
+    <Project Path="Nugets/NugetClass/NugetClass.csproj" Id="348455a3-4e9a-4c3a-8918-23b4d1568fb3" />
+  </Folder>
   <Folder Name="/src/" />
-  <Folder Name="/src/1.MedicalAppointments.Domain/">
+  <Folder Name="/src/A.Domain/">
     <Project Path="MedicalAppointments.Domain/MedicalAppointments.Domain.csproj" />
   </Folder>
-  <Folder Name="/src/2.MedicalAppointments.Core/">
+  <Folder Name="/src/B.Core/">
     <Project Path="MedicalAppointments.Core/MedicalAppointments.Core.csproj" />
   </Folder>
-  <Folder Name="/src/3.MedicalAppointments.Persistence/">
+  <Folder Name="/src/C.Persistence/">
     <Project Path="MedicalAppointments.Persistence/MedicalAppointments.Persistence.csproj" />
   </Folder>
-  <Folder Name="/src/4.MedicalAppointments.Infrastructure/">
+  <Folder Name="/src/D.Infrastructure/">
     <Project Path="MedicalAppointments.Infrastructure/MedicalAppointments.Infrastructure.csproj" />
   </Folder>
-  <Folder Name="/src/5.MedicalAppointments.Api/">
+  <Folder Name="/src/E.Api/">
     <Project Path="MedicalAppointments.Api/MedicalAppointments.Api.csproj" />
   </Folder>
 </Solution>
