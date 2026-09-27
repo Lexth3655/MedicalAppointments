@@ -2,20 +2,21 @@
   <Folder Name="/Nuget_Class/">
     <Project Path="Nugets/NugetClass/NugetClass.csproj" Id="348455a3-4e9a-4c3a-8918-23b4d1568fb3" />
   </Folder>
-  <Folder Name="/src/" />
-  <Folder Name="/src/A.Domain/">
-    <Project Path="MedicalAppointments.Domain/MedicalAppointments.Domain.csproj" />
+  <Folder Name="/UM_Paciente/" />
+  <Folder Name="/UM_Paciente/A.Domain/">
+    <Project Path="UM_Paciente/MedicalAppointments.Domain/MedicalAppointments.Patients.Domain.csproj" />
   </Folder>
-  <Folder Name="/src/B.Core/">
-    <Project Path="MedicalAppointments.Core/MedicalAppointments.Core.csproj" />
+  <Folder Name="/UM_Paciente/B.Core/">
+    <Project Path="UM_Paciente/MedicalAppointments.Core/MedicalAppointments.Patients.Core.csproj" />
   </Folder>
-  <Folder Name="/src/C.Persistence/">
-    <Project Path="MedicalAppointments.Persistence/MedicalAppointments.Persistence.csproj" />
+  <Folder Name="/UM_Paciente/C.Persistence/">
+    <Project Path="UM_Paciente/MedicalAppointments.Persistence/MedicalAppointments.Patients.Persistence.csproj" />
   </Folder>
-  <Folder Name="/src/D.Infrastructure/">
-    <Project Path="MedicalAppointments.Infrastructure/MedicalAppointments.Infrastructure.csproj" />
+  <Folder Name="/UM_Paciente/D.Infrastructure/">
+    <Project Path="UM_Paciente/MedicalAppointments.Infrastructure/MedicalAppointments.Patients.Infrastructure.csproj" />
   </Folder>
-  <Folder Name="/src/E.Api/">
-    <Project Path="MedicalAppointments.Api/MedicalAppointments.Api.csproj" />
+  <Folder Name="/UM_Paciente/E.Api/">
+    <Project Path="UM_Paciente/MedicalAppointments.Api/MedicalAppointments.Patients.Api.csproj" />
   </Folder>
+  <Folder Name="/UM_Seguridad/" />
 </Solution>
