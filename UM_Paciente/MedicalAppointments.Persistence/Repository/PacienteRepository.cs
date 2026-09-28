@@ -1,19 +1,12 @@
 ﻿using MedicalAppointments.Patients.Core.Interfaces.Repositorios;
 using MedicalAppointments.Patients.Domain.Models;
-using MedicalAppointments.Persistence.Data;
+using MedicalAppointments.Patients.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
-using NugetClass.Abstractions;
 using NugetClass.Implementations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MedicalAppointments.Persistence.Repository
+namespace MedicalAppointments.Patients.Persistence.Repository
 {
-    internal class PacienteRepository : RepositoryGeneric<Paciente>,  IPaciente
+    internal class PacienteRepository : RepositoryGeneric<Paciente>, IPaciente
     {
         private readonly AppDbContext _context;
         public PacienteRepository(AppDbContext context) : base(context)

@@ -1,7 +1,6 @@
 ﻿using MedicalAppointments.Patients.Core.Interfaces.Repositorios;
 using MedicalAppointments.Patients.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using NugetClass.Abstractions;
 
 namespace MedicalAppointments.Patients.Api.Controllers
 {

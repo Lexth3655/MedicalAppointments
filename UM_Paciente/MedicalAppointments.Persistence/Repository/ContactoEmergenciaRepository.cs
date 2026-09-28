@@ -1,16 +1,10 @@
 ﻿using MedicalAppointments.Patients.Core.Interfaces.Repositorios;
 using MedicalAppointments.Patients.Domain.Models;
-using MedicalAppointments.Persistence.Data;
+using MedicalAppointments.Patients.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using NugetClass.Implementations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace MedicalAppointments.Persistence.Repository
+namespace MedicalAppointments.Patients.Persistence.Repository
 {
     internal class ContactoEmergenciaRepository : RepositoryGeneric<ContactoEmergencia>, IContactoEmergencia
     {

@@ -1,12 +1,11 @@
 ﻿using MedicalAppointments.Patients.Core.Interfaces.Repositorios;
-using MedicalAppointments.Persistence.Data;
-using MedicalAppointments.Persistence.Repository;
+using MedicalAppointments.Patients.Persistence.Data;
+using MedicalAppointments.Patients.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
-namespace MedicalAppointments.Persistence
+namespace MedicalAppointments.Patients.Persistence
 {
     public static class Extension
     {

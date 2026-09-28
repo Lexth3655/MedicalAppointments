@@ -1,11 +1,6 @@
 ﻿using MediatR;
 using MedicalAppointments.Patients.Core.Interfaces.Repositorios;
 using MedicalAppointments.Patients.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedicalAppointments.Patients.Core.Feature.Patients.Queries
 {
@@ -15,7 +10,7 @@ namespace MedicalAppointments.Patients.Core.Feature.Patients.Queries
     {
         private readonly IPaciente _pacienteRepository;
 
-        public GetPacientesQueryHandler(IPaciente  pacienteRepository)
+        public GetPacientesQueryHandler(IPaciente pacienteRepository)
         {
             _pacienteRepository = pacienteRepository ?? throw new ArgumentNullException(nameof(pacienteRepository));
         }

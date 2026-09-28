@@ -1,7 +1,7 @@
-using MedicalAppointments.Patients.Infrastructure;
 using MedicalAppointments.Patients.Core;
 using MedicalAppointments.Patients.Persistence;
 using MedicalAppointments.Patients.Persistence.Data;
+using MedicalAppointments.Patients.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -14,8 +14,9 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddCore();
+
 builder.Services.AddPersistence();
-builder.Services.AddExternals();
+builder.Services.AddInfrastructure();
 
 var app = builder.Build();
 

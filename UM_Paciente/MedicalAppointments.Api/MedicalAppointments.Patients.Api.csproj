@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Nugets\NugetClass\NugetClass.csproj" />
+    <ProjectReference Include="..\MedicalAppointments.Infrastructure\MedicalAppointments.Patients.Infrastructure.csproj" />
     <ProjectReference Include="..\MedicalAppointments.Persistence\MedicalAppointments.Patients.Persistence.csproj" />
   </ItemGroup>
 

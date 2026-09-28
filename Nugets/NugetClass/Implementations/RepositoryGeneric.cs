@@ -1,6 +1,6 @@
-﻿using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using NugetClass.Abstractions;
+using System.Linq.Expressions;
 
 
 namespace NugetClass.Implementations

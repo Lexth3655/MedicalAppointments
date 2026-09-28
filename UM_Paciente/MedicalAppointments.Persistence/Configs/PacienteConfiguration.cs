@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 
-namespace MedicalAppointments.Persistence.Configs
+namespace MedicalAppointments.Patients.Persistence.Configs
 {
     public sealed class PacienteConfiguration : IEntityTypeConfiguration<Paciente>
     {

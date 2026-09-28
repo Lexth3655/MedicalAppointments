@@ -1,11 +1,6 @@
 ﻿using MediatR;
-using MedicalAppointments.Patients.Domain.Models;
 using MedicalAppointments.Patients.Core.Interfaces.Repositorios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MedicalAppointments.Patients.Domain.Models;
 
 namespace MedicalAppointments.Patients.Core.Feature.EmergencyContacts.Command
 {
