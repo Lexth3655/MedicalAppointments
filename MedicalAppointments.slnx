@@ -1,6 +1,8 @@
 <Solution>
   <Folder Name="/Nuget_Class/">
     <Project Path="Nugets/NugetClass/NugetClass.csproj" Id="348455a3-4e9a-4c3a-8918-23b4d1568fb3" />
+    <Project Path="Nugets/NugetPackage_Rest/NugetPackage_Rest.csproj" />
+    <Project Path="Nugets/NugetPackage_Rest.Tests/NugetPackage_Rest.Tests.csproj" />
   </Folder>
   <Folder Name="/UM_Paciente/" />
   <Folder Name="/UM_Paciente/A.Domain/">
