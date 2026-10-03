@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NugetClass.Abstractions;
+using NugetClass.Pagination.Filters;
 using System.Linq.Expressions;
 
 
@@ -68,6 +69,27 @@ namespace NugetClass.Implementations
         {
             var result = await _dbSet.FindAsync(new object[] { id }, cancellationToken);
             return result;
+        }
+
+        public async Task<TEntity?> GetOneByAsync(string filter, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrWhiteSpace(filter))
+                throw new ArgumentException("El filtro no puede estar vacío.", nameof(filter));
+
+            var predicate = Filter.FromStringExpression<TEntity>(filter);
+            return await _context.Set<TEntity>()
+                .AsNoTracking()
+                .FirstOrDefaultAsync(predicate, cancellationToken);
+        }
+
+        public async Task<int> SaveRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+        {
+            ArgumentNullException.ThrowIfNull(entities);
+            var items = entities.ToList();
+            if (items.Count == 0) return 0;
+
+            await _context.Set<TEntity>().AddRangeAsync(items, cancellationToken);
+            return await _context.SaveChangesAsync(cancellationToken);
         }
     }
 }

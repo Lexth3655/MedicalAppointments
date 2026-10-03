@@ -34,7 +34,7 @@ public abstract class PagedRepository<T, TContext> : IPagedRepository<T>
         => asNoTracking ? Set.AsNoTracking() : Set;
 
     // ────────────────────────────────────────────────────────────
-    // FIRMA DEL PROFESOR (includes por Expression)
+    // (includes por Expression)
     // ────────────────────────────────────────────────────────────
     public async Task<PagedResult<T>> GetPagedAsync(
         int pageNumber,

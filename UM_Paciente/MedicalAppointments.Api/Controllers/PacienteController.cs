@@ -5,6 +5,7 @@ using MediatR;
 using MedicalAppointments.Patients.Core.Feature.Patients.Queries;
 using NugetClass.Pagination.Models;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedicalAppointments.Patients.Api.Controllers
 {
@@ -36,6 +37,59 @@ namespace MedicalAppointments.Patients.Api.Controllers
             catch (ArgumentException ex)
             {
                 return BadRequest(new ProblemDetails { Detail = ex.Message, Status = StatusCodes.Status400BadRequest });
+            }
+        }
+
+        [HttpGet("one")]
+        public async Task<ActionResult<Paciente>> GetOneBy([FromQuery] string filter, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(filter))
+                return BadRequest(new ProblemDetails { Detail = "El filtro es obligatorio.", Status = StatusCodes.Status400BadRequest });
+
+            try
+            {
+                var paciente = await patientsRepository.GetOneByAsync(filter, cancellationToken);
+                return paciente is null ? NotFound() : Ok(paciente);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(new ProblemDetails { Detail = ex.Message, Status = StatusCodes.Status400BadRequest });
+            }
+        }
+
+        [HttpPost("range")]
+        public async Task<IActionResult> SaveRange([FromBody] List<Paciente>? pacientes, CancellationToken cancellationToken)
+        {
+            if (pacientes is null || pacientes.Count == 0)
+                return BadRequest(new ProblemDetails { Detail = "Envía al menos un paciente.", Status = StatusCodes.Status400BadRequest });
+
+            if (pacientes.Any(p => p is null || string.IsNullOrWhiteSpace(p.CodigoPaciente)
+                                || string.IsNullOrWhiteSpace(p.TipoDocumento)
+                                || string.IsNullOrWhiteSpace(p.NumeroDocumento)
+                                || string.IsNullOrWhiteSpace(p.Nombres)
+                                || string.IsNullOrWhiteSpace(p.Apellidos)
+                                || string.IsNullOrWhiteSpace(p.Sexo)))
+                return BadRequest(new ProblemDetails { Detail = "Cada paciente debe incluir código, documento, nombres, apellidos y sexo.", Status = StatusCodes.Status400BadRequest });
+
+            if (pacientes.GroupBy(p => p.CodigoPaciente, StringComparer.OrdinalIgnoreCase).Any(group => group.Count() > 1)
+                || pacientes.GroupBy(p => $"{p.TipoDocumento}|{p.NumeroDocumento}", StringComparer.OrdinalIgnoreCase).Any(group => group.Count() > 1))
+                return Conflict(new ProblemDetails { Detail = "La lista contiene códigos o documentos duplicados.", Status = StatusCodes.Status409Conflict });
+
+            foreach (var paciente in pacientes)
+            {
+                paciente.PacienteId = 0;
+                paciente.FechaRegistro = DateTime.UtcNow;
+                paciente.ContactosEmergencia = [];
+            }
+
+            try
+            {
+                var savedCount = await patientsRepository.SaveRangeAsync(pacientes, cancellationToken);
+                return StatusCode(StatusCodes.Status201Created, new { insertedCount = savedCount });
+            }
+            catch (DbUpdateException)
+            {
+                return Conflict(new ProblemDetails { Detail = "Uno o más códigos o documentos ya existen en la base de datos.", Status = StatusCodes.Status409Conflict });
             }
         }
 

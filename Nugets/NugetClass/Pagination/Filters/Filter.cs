@@ -1,6 +1,6 @@
-﻿using NugetClass.Pagination.Exceptions;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Linq.Dynamic.Core;
+using NugetClass.Pagination.Exceptions;
 using System.Linq.Expressions;
 
 
@@ -49,3 +49,4 @@ namespace NugetClass.Pagination.Filters
         }
     }
 }
+
