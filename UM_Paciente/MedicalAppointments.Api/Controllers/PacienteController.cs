@@ -1,16 +1,43 @@
 ﻿using MedicalAppointments.Patients.Core.Interfaces.Repositorios;
 using MedicalAppointments.Patients.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using MediatR;
+using MedicalAppointments.Patients.Core.Feature.Patients.Queries;
+using NugetClass.Pagination.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace MedicalAppointments.Patients.Api.Controllers
 {
     [ApiController]
     [Route("c")]
-    public sealed class PacientesController(IPaciente patientsRepository) : ControllerBase
+    public sealed class PacientesController(IPaciente patientsRepository, IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Paciente>>> GetAll(CancellationToken cancellationToken) =>
-            Ok(await patientsRepository.GetByFilterAsync(p => p.Activo == true, cancellationToken: cancellationToken));
+        public async Task<ActionResult<PagedResult<Paciente>>> GetAll(
+            [FromQuery] RequestParameters request,
+            CancellationToken cancellationToken)
+        {
+            var query = new GetPacientesQuery
+            {
+                PageNumber = request.PageNumber,
+                PageSize = request.PageSize,
+                Filter = request.Filter,
+                SortBy = request.SortBy
+            };
+
+            try
+            {
+                return Ok(await mediator.Send(query, cancellationToken));
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(new ProblemDetails { Detail = ex.Message, Status = StatusCodes.Status400BadRequest });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new ProblemDetails { Detail = ex.Message, Status = StatusCodes.Status400BadRequest });
+            }
+        }
 
         [HttpGet("{pacienteId:long}")]
         public async Task<ActionResult<Paciente>> GetById(long pacienteId, CancellationToken cancellationToken)

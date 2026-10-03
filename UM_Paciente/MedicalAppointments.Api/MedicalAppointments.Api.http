@@ -1,6 +1,32 @@
 @MedicalAppointments.Api_HostAddress = http://localhost:5259
 
-GET {{MedicalAppointments.Api_HostAddress}}/weatherforecast/
+### Página 1: 20 filas por defecto; con la semilla se esperan 300 registros y 15 páginas
+GET {{MedicalAppointments.Api_HostAddress}}/c
 Accept: application/json
 
-###
+### Página 2 con tamaño de página 10
+GET {{MedicalAppointments.Api_HostAddress}}/c?pageNumber=2&pageSize=10
+Accept: application/json
+
+### Orden descendente por nombre
+GET {{MedicalAppointments.Api_HostAddress}}/c?pageNumber=1&pageSize=10&sortBy=Nombres%20desc
+Accept: application/json
+
+### Filtro dinámico: nombres que contienen "Paciente prueba 01"
+GET {{MedicalAppointments.Api_HostAddress}}/c?pageNumber=1&pageSize=20&filter=Nombres.Contains(%22Paciente%20prueba%2001%22)
+Accept: application/json
+
+### Tamaño pedido 500: el modelo lo limita al máximo configurado (200)
+GET {{MedicalAppointments.Api_HostAddress}}/c?pageNumber=1&pageSize=500
+Accept: application/json
+
+### Orden inválido: se espera HTTP 400
+GET {{MedicalAppointments.Api_HostAddress}}/c?sortBy=CampoQueNoExiste
+Accept: application/json
+### Todos los contactos de emergencia: con la semilla se esperan 300 registros y 15 páginas
+GET {{MedicalAppointments.Api_HostAddress}}/EmergencyContacts?pageNumber=1&pageSize=20
+Accept: application/json
+
+### Contactos de un paciente concreto (reemplaza 1 por un PacienteID existente)
+GET {{MedicalAppointments.Api_HostAddress}}/patients/1/emergency-contacts?pageNumber=1&pageSize=10
+Accept: application/json

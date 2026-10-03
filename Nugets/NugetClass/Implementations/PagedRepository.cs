@@ -50,6 +50,7 @@ public abstract class PagedRepository<T, TContext> : IPagedRepository<T>
             throw new ArgumentOutOfRangeException(nameof(pageNumber), "pageNumber must be 1 or greater.");
         if (pageSize < 1)
             throw new ArgumentOutOfRangeException(nameof(pageSize), "pageSize must be 1 or greater.");
+        pageSize = Math.Min(pageSize, NugetClass.Abstractions.PaginationDefaults.MaxPageSize);
 
         var query = Query(asNoTracking);
 
@@ -67,7 +68,7 @@ public abstract class PagedRepository<T, TContext> : IPagedRepository<T>
             : query.OrderBy(e => EF.Property<object>(e, DefaultSortField));
 
         IQueryable<T> paged = ordered
-            .Skip((pageNumber - 1) * pageSize)
+            .Skip((int)Math.Min((long)(pageNumber - 1) * pageSize, int.MaxValue))
             .Take(pageSize);
 
         if (splitQuery && includes.Length > 0)
@@ -101,6 +102,7 @@ public abstract class PagedRepository<T, TContext> : IPagedRepository<T>
             throw new ArgumentOutOfRangeException(nameof(pageNumber), "pageNumber must be 1 or greater.");
         if (pageSize < 1)
             throw new ArgumentOutOfRangeException(nameof(pageSize), "pageSize must be 1 or greater.");
+        pageSize = Math.Min(pageSize, NugetClass.Abstractions.PaginationDefaults.MaxPageSize);
 
         var query = Query(asNoTracking);
 
@@ -121,12 +123,10 @@ public abstract class PagedRepository<T, TContext> : IPagedRepository<T>
         var totalRecords = await query.CountAsync(cancellationToken);
 
         // Orden: si el cliente manda sortBy, respétalo; si no, usa DefaultSortField.
-        IQueryable<T> ordered = string.IsNullOrWhiteSpace(sortBy)
-            ? query.OrderBy(e => EF.Property<object>(e, DefaultSortField))
-            : query.OrderBy(e => EF.Property<object>(e, sortBy));
+        IQueryable<T> ordered = NugetClass.Pagination.Filters.Filter.ApplySort(query, sortBy, DefaultSortField);
 
         IQueryable<T> paged = ordered
-            .Skip((pageNumber - 1) * pageSize)
+            .Skip((int)Math.Min((long)(pageNumber - 1) * pageSize, int.MaxValue))
             .Take(pageSize);
 
         if (splitQuery && !string.IsNullOrWhiteSpace(includes))

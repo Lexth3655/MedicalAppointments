@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NugetClass.Pagination.Exceptions;
+using System.ComponentModel.DataAnnotations;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 
@@ -24,7 +25,7 @@ namespace NugetClass.Pagination.Filters
             catch (Exception ex)
             {
                 // Fix #2: preservar la causa original para debugging
-                throw new ValidationException($"filter expression invalid: '{query}'", ex);
+                throw new PaginationException($"filter expression invalid: '{query}'", ex);
             }
         }
 
@@ -33,17 +34,17 @@ namespace NugetClass.Pagination.Filters
         /// </summary>
         public static IOrderedQueryable<TModel> ApplySort<TModel>(
             IQueryable<TModel> query,
-            string? sortBy)
+            string? sortBy,
+            string defaultSortField = "Id")
         {
+            var expression = string.IsNullOrWhiteSpace(sortBy) ? defaultSortField : sortBy;
             try
             {
-                return string.IsNullOrWhiteSpace(sortBy)
-                    ? query.OrderBy("Id")           // Fix #3: orden por defecto determinista
-                    : query.OrderBy(sortBy);
+                return query.OrderBy(expression);
             }
             catch (Exception ex)
             {
-                throw new ValidationException($"sort expression invalid: '{sortBy}'", ex);
+                throw new PaginationException($"sort expression invalid: '{expression}'", ex);
             }
         }
     }

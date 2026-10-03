@@ -21,6 +21,8 @@ namespace MedicalAppointments.Patients.Persistence
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IPaciente, PacienteRepository>();
+            services.AddScoped<IPaginationPaciente, PaginationPaciente>();
+            services.AddScoped<IPaginationContactoEmergencia, PaginationContactoEmergencia>();
             services.AddScoped<IContactoEmergencia, ContactoEmergenciaRepository>();
             return services;
         }

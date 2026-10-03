@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NugetClass.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,8 @@ namespace NugetClass.Pagination.Models
 {
     public class RequestParameters
     {
-        private const int MaxPageSize = 200;
-        private int _pageSize = 20;
-        private int _pageNumber = 1;
+        private int _pageSize = PaginationDefaults.DefaultPageSize;
+        private int _pageNumber = PaginationDefaults.DefaultPageNumber;
 
         public int PageNumber
         {
@@ -24,7 +24,7 @@ namespace NugetClass.Pagination.Models
             set => _pageSize = value switch
             {
                 < 1 => 1,
-                > MaxPageSize => MaxPageSize,
+                > PaginationDefaults.MaxPageSize => PaginationDefaults.MaxPageSize,
                 _ => value
             };
         }
