@@ -1,24 +1,23 @@
-﻿using Microsoft.Extensions.Configuration;
+using MedicalAppointments.Patients.Core.Services;
+using MedicalAppointments.Patients.Infrastructure.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NugetPackage_Rest.Builders;
+using NugetPackage_Rest.Extensions;
+using NugetPackage_Rest.Interfaces.IServices;
 
-namespace MedicalAppointments.Patients.Infrastructure
+namespace MedicalAppointments.Patients.Infrastructure;
+
+public static class Extension
 {
-    public static class Extension
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+        services.AddRequestLogging(configuration);
+        services.AddHttpClient<IRest, RestBuilder>(client =>
         {
-            IConfiguration configuration;
-            using (ServiceProvider provider = services.BuildServiceProvider())
-                configuration = provider.GetRequiredService<IConfiguration>();
-            // Aquí se registrarían HttpClients tipados hacia otros microservicios
-            // ej: services.AddHttpClient<IPatientServiceClient, PatientServiceClient>(...)
-
-            return services;
-        }
+            client.Timeout = TimeSpan.FromSeconds(30);
+        });
+        services.AddScoped<ICitasService, CitasService>();
+        return services;
     }
 }

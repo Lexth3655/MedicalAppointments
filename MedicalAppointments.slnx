@@ -17,6 +17,9 @@
   <Folder Name="/UM_Paciente/D.Infrastructure/">
     <Project Path="UM_Paciente/MedicalAppointments.Infrastructure/MedicalAppointments.Patients.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/UM_Paciente/F.Tests/">
+    <Project Path="UM_Paciente/MedicalAppointments.Tests/MedicalAppointments.Tests.csproj" />
+  </Folder>
   <Folder Name="/UM_Paciente/E.Api/">
     <Project Path="UM_Paciente/MedicalAppointments.Api/MedicalAppointments.Patients.Api.csproj" />
   </Folder>
