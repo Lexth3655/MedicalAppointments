@@ -1,0 +1,29 @@
+@MedicalAppointments.Agenda.Api_HostAddress = https://localhost:7164
+
+### Listar especialidades (paginado y filtrable)
+GET {{MedicalAppointments.Agenda.Api_HostAddress}}/api/especialidades?pageNumber=1&pageSize=10
+Accept: application/json
+
+### Listar consultorios
+GET {{MedicalAppointments.Agenda.Api_HostAddress}}/api/consultorios?pageNumber=1&pageSize=10
+Accept: application/json
+
+### Listar médicos con su especialidad
+GET {{MedicalAppointments.Agenda.Api_HostAddress}}/api/medicos?pageNumber=1&pageSize=10
+Accept: application/json
+
+### Ver horarios del médico 1
+GET {{MedicalAppointments.Agenda.Api_HostAddress}}/api/horarios-medicos/medico/1?pageNumber=1&pageSize=10
+Accept: application/json
+
+### Ver disponibilidad (reemplaza la fecha por una con horario registrado)
+GET {{MedicalAppointments.Agenda.Api_HostAddress}}/api/horarios-medicos/medico/1/disponibilidad/2026-10-06
+Accept: application/json
+
+### Listar citas
+GET {{MedicalAppointments.Agenda.Api_HostAddress}}/api/citas?pageNumber=1&pageSize=10
+Accept: application/json
+
+### Citas de un paciente (PacienteID de ejemplo: 1)
+GET {{MedicalAppointments.Agenda.Api_HostAddress}}/api/citas/paciente/1
+Accept: application/json

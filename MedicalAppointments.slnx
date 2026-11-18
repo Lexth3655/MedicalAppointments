@@ -1,8 +1,24 @@
 <Solution>
   <Folder Name="/Nuget_Class/">
     <Project Path="Nugets/NugetClass/NugetClass.csproj" Id="348455a3-4e9a-4c3a-8918-23b4d1568fb3" />
-    <Project Path="Nugets/NugetPackage_Rest/NugetPackage_Rest.csproj" />
     <Project Path="Nugets/NugetPackage_Rest.Tests/NugetPackage_Rest.Tests.csproj" />
+    <Project Path="Nugets/NugetPackage_Rest/NugetPackage_Rest.csproj" />
+  </Folder>
+  <Folder Name="/UM_Agenda/" />
+  <Folder Name="/UM_Agenda/A.Domain/">
+    <Project Path="UM_Agenda/MedicalAppointments.Agenda.Domain/MedicalAppointments.Agenda.Domain.csproj" />
+  </Folder>
+  <Folder Name="/UM_Agenda/B.Core/">
+    <Project Path="UM_Agenda/MedicalAppointments.Agenda.Core/MedicalAppointments.Agenda.Core.csproj" />
+  </Folder>
+  <Folder Name="/UM_Agenda/C.Persistence/">
+    <Project Path="UM_Agenda/MedicalAppointments.Agenda.Persistence/MedicalAppointments.Agenda.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/UM_Agenda/D.Infrastructure/">
+    <Project Path="UM_Agenda/MedicalAppointments.Agenda.Infrastructure/MedicalAppointments.Agenda.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/UM_Agenda/E.Api/">
+    <Project Path="UM_Agenda/MedicalAppointments.Agenda.Api/MedicalAppointments.Agenda.Api.csproj" />
   </Folder>
   <Folder Name="/UM_Paciente/" />
   <Folder Name="/UM_Paciente/A.Domain/">

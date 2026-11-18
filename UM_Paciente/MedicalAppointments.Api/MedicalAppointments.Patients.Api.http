@@ -1,0 +1,17 @@
+@MedicalAppointments.Patients.Api_HostAddress = https://localhost:7163
+
+### Listar pacientes (paginado y filtrable)
+GET {{MedicalAppointments.Patients.Api_HostAddress}}/c?pageNumber=1&pageSize=20
+Accept: application/json
+
+### Obtener paciente por ID
+GET {{MedicalAppointments.Patients.Api_HostAddress}}/c/1
+Accept: application/json
+
+### Listar contactos de emergencia
+GET {{MedicalAppointments.Patients.Api_HostAddress}}/EmergencyContacts?pageNumber=1&pageSize=20
+Accept: application/json
+
+### Contactos de emergencia de un paciente
+GET {{MedicalAppointments.Patients.Api_HostAddress}}/patients/1/emergency-contacts?pageNumber=1&pageSize=10
+Accept: application/json
