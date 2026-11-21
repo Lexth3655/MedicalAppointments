@@ -229,6 +229,14 @@ namespace MedicalAppointments.Agenda.Persistence.Migrations
                         .HasDefaultValue(30)
                         .HasColumnName("DuracionCitaMin");
 
+                    b.Property<string>("EstadoTurno")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasDefaultValue("Programado")
+                        .HasColumnName("EstadoTurno");
+
                     b.Property<DateTime>("FechaCreacion")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")

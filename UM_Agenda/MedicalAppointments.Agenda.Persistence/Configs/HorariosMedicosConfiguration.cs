@@ -18,6 +18,7 @@ public sealed class HorariosMedicosConfiguration : IEntityTypeConfiguration<Hora
         builder.Property(x => x.HoraFin).HasColumnName("HoraFin").HasColumnType("time").IsRequired();
         builder.Property(x => x.DuracionCitaMin).HasColumnName("DuracionCitaMin").HasDefaultValue(30);
         builder.Property(x => x.Activo).HasColumnName("Activo").HasDefaultValue(true);
+        builder.Property(x => x.EstadoTurno).HasColumnName("EstadoTurno").HasMaxLength(20).HasDefaultValue("Programado").IsRequired();
         builder.Property(x => x.FechaCreacion).HasColumnName("FechaCreacion").HasColumnType("datetime2").HasDefaultValueSql("SYSDATETIME()");
         builder.Property(x => x.FechaModificacion).HasColumnName("FechaModificacion").HasColumnType("datetime2").HasDefaultValueSql("SYSDATETIME()");
         builder.HasOne(x => x.Medico).WithMany(x => x.Horarios).HasForeignKey(x => x.MedicoId).OnDelete(DeleteBehavior.NoAction);

@@ -1,0 +1,27 @@
+[
+  {
+    "Name": "MedicalAppointments - Servicios locales",
+    "Projects": [
+      {
+        "Path": "UM_Agenda\\MedicalAppointments.Agenda.Api\\MedicalAppointments.Agenda.Api.csproj",
+        "Action": "Start",
+        "DebugTarget": "http"
+      },
+      {
+        "Path": "UM_Paciente\\MedicalAppointments.Api\\MedicalAppointments.Patients.Api.csproj",
+        "Action": "Start",
+        "DebugTarget": "http"
+      },
+      {
+        "Path": "UM_Seguridad\\MedicalAppointments.Security.Api\\MedicalAppointments.Security.Api.csproj",
+        "Action": "Start",
+        "DebugTarget": "http"
+      },
+      {
+        "Path": "UM_ClinicalCare\\MedicalAppointments.ClinicalCare.Api\\MedicalAppointments.ClinicalCare.Api.csproj",
+        "Action": "Start",
+        "DebugTarget": "http"
+      }
+    ]
+  }
+]

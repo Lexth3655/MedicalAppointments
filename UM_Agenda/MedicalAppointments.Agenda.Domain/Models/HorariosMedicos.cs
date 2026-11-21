@@ -18,6 +18,7 @@ namespace MedicalAppointments.Agenda.Domain.Models
         public TimeOnly HoraFin { get; set; }
         public int DuracionCitaMin { get; set; } = 30;
         public bool Activo { get; set; }
+        public string EstadoTurno { get; set; } = "Programado";
         public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
         public DateTime FechaModificacion { get; set; }
 

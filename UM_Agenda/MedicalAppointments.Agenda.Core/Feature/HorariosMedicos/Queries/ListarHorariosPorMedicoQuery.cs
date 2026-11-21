@@ -10,6 +10,7 @@ namespace MedicalAppointments.Agenda.Core.Feature.HorarioMedico.Queries;
 public sealed class ListarHorariosPorMedicoQuery : RequestParameters, IRequest<PagedResult<HorariosMedicos>>
 {
     public long MedicoId { get; set; }
+    public bool IncluirInactivos { get; set; }
 }
 
 public sealed class ListarHorariosPorMedicoQueryHandler(IPaginationHorariosMedicos repository)
@@ -17,7 +18,7 @@ public sealed class ListarHorariosPorMedicoQueryHandler(IPaginationHorariosMedic
 {
     public Task<PagedResult<HorariosMedicos>> Handle(ListarHorariosPorMedicoQuery request, CancellationToken cancellationToken)
     {
-        Expression<Func<HorariosMedicos, bool>> filter = x => x.Activo && x.MedicoId == request.MedicoId;
+        Expression<Func<HorariosMedicos, bool>> filter = x => x.MedicoId == request.MedicoId && (request.IncluirInactivos || x.Activo);
         if (!string.IsNullOrWhiteSpace(request.Filter))
             filter = Combine(filter, Filter.FromStringExpression<HorariosMedicos>(request.Filter));
         return repository.GetPageResponseAsync(request.PageNumber, request.PageSize, filter,

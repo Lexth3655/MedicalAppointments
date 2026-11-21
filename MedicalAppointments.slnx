@@ -40,4 +40,25 @@
     <Project Path="UM_Paciente/MedicalAppointments.Api/MedicalAppointments.Patients.Api.csproj" />
   </Folder>
   <Folder Name="/UM_Seguridad/" />
+  <Folder Name="/UM_Seguridad/A.Domain/">
+    <Project Path="UM_Seguridad/MedicalAppointments.Security.Domain/MedicalAppointments.Security.Domain.csproj" />
+  </Folder>
+  <Folder Name="/UM_Seguridad/B.Core/">
+    <Project Path="UM_Seguridad/MedicalAppointments.Security.Core/MedicalAppointments.Security.Core.csproj" />
+  </Folder>
+  <Folder Name="/UM_Seguridad/C.Persistence/">
+    <Project Path="UM_Seguridad/MedicalAppointments.Security.Persistence/MedicalAppointments.Security.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/UM_Seguridad/D.Infrastructure/">
+    <Project Path="UM_Seguridad/MedicalAppointments.Security.Infrastructure/MedicalAppointments.Security.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/UM_Seguridad/E.Api/">
+    <Project Path="UM_Seguridad/MedicalAppointments.Security.Api/MedicalAppointments.Security.Api.csproj" />
+  </Folder>
+  <Folder Name="/UM_ClinicalCare/" />
+  <Folder Name="/UM_ClinicalCare/A.Domain/"><Project Path="UM_ClinicalCare/MedicalAppointments.ClinicalCare.Domain/MedicalAppointments.ClinicalCare.Domain.csproj" /></Folder>
+  <Folder Name="/UM_ClinicalCare/B.Core/"><Project Path="UM_ClinicalCare/MedicalAppointments.ClinicalCare.Core/MedicalAppointments.ClinicalCare.Core.csproj" /></Folder>
+  <Folder Name="/UM_ClinicalCare/C.Persistence/"><Project Path="UM_ClinicalCare/MedicalAppointments.ClinicalCare.Persistence/MedicalAppointments.ClinicalCare.Persistence.csproj" /></Folder>
+  <Folder Name="/UM_ClinicalCare/D.Infrastructure/"><Project Path="UM_ClinicalCare/MedicalAppointments.ClinicalCare.Infrastructure/MedicalAppointments.ClinicalCare.Infrastructure.csproj" /></Folder>
+  <Folder Name="/UM_ClinicalCare/E.Api/"><Project Path="UM_ClinicalCare/MedicalAppointments.ClinicalCare.Api/MedicalAppointments.ClinicalCare.Api.csproj" /></Folder>
 </Solution>
